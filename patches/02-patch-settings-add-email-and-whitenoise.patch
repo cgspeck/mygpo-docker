@@ -1,0 +1,24 @@
+diff --git a/mygpo/settings.py b/mygpo/settings.py
+index b3927315..991a7e73 100644
+--- a/mygpo/settings.py
++++ b/mygpo/settings.py
+@@ -3,6 +3,11 @@ import sys
+ import os.path
+ import dj_database_url
+ 
++EMAIL_HOST = os.getenv("EMAIL_HOST", "localhost")
++EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "")
++EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "")
++EMAIL_PORT = int(os.getenv("EMAIL_PORT", "25"))
++EMAIL_USE_SSL = os.getenv("EMAIL_USE_SSL", "False") == "True"
+ 
+ try:
+     from psycopg2cffi import compat
+@@ -141,6 +146,7 @@ MIDDLEWARE = [
+     "django.middleware.csrf.CsrfViewMiddleware",
+     "django.contrib.sessions.middleware.SessionMiddleware",
+     "django.contrib.auth.middleware.AuthenticationMiddleware",
++    "whitenoise.middleware.WhiteNoiseMiddleware",
+     "django.middleware.locale.LocaleMiddleware",
+     "django.contrib.messages.middleware.MessageMiddleware",
+ ]

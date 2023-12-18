@@ -1,0 +1,10 @@
+diff --git a/requirements-dev.txt b/requirements-dev.txt
+index 5729bb42..7a636f30 100644
+--- a/requirements-dev.txt
++++ b/requirements-dev.txt
+@@ -1,4 +1,4 @@
+-transifex-client==0.14.3
++#transifex-client==0.14.3
+ sphinx
+ pep8
+ flake8
