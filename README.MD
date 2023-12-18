@@ -1,3 +1,3 @@
-# Docker-MyGPO
+# MyGPO-Docker
 
-Docker container for MyGPO, the server component of the [gPodder service](https://gpodder.github.io/).
+Docker container for MyGPO, the server component of the [gPodder.net service](https://gpodder.net/).
