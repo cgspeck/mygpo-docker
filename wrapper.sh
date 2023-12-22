@@ -6,7 +6,13 @@ fi
 cmd="${1:-serve}"
 
 case "$cmd" in
+    feed-update-daemon)
+	./mfdr -d
+	;;
     beat)
+        if [ -f /tmp/celerybeat.pid ]; then
+            rm /tmp/celerybeat.pid
+        fi
         python manage.py migrate
         celery -A mygpo beat --pidfile /tmp/celerybeat.pid -S django
         ;;
@@ -16,7 +22,7 @@ case "$cmd" in
         ;;
     serve)
         python manage.py migrate
-        python manage.py collectstatic
+        python manage.py collectstatic --no-input
         python manage.py runserver 0.0.0.0:8000
         ;;
     *)

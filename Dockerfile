@@ -36,6 +36,10 @@ RUN patch -p1 < /patches/02-patch-settings-add-email-and-whitenoise.patch
 RUN patch -p1 < /patches/03-patch-requirements-dev-remove-transifex-client.patch
 # TODO: create/change to non-root user
 # TODO: add args/wrapper for config
+RUN wget https://github.com/cgspeck/mfdr/releases/download/v1.0.1/mfdr.zip \
+  && unzip mfdr.zip \
+  && rm mfdr.zip
+RUN chmod +x /usr/src/app/mfdr
 COPY wrapper.sh /usr/src/app/
 RUN chmod +x /usr/src/app/wrapper.sh
 ENTRYPOINT [ "/usr/src/app/wrapper.sh" ]
